@@ -10,4 +10,6 @@ COPY src/ /app/src/
 
 WORKDIR /app/src
 
+ENV PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 CMD /app/.venv/bin/gunicorn -c hooks_config.py --bind 0.0.0.0:8000 --workers=1 --threads=1 routes:app
